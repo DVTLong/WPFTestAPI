@@ -5,22 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFTestAPI"
         mc:Ignorable="d"
-        Title="Token template" Height="450" Width="800">
+        Title="Token template" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid Margin="50">
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        <TextBox Grid.Row="0" Name="txbMaKO" Text="MaKO" GotFocus="TxbMaKO_GotFocus" TextChanged="TxbMaKO_TextChanged" />
-        <TextBox Grid.Row="1" Name="txbToken" Text="Token" IsReadOnly="True" />
-        <Button Grid.Row="2" Name="btnAPIGetToken" Content="API GetToken" Click="BtnAPIGetToken_ClickAsync" />
-        <Button Grid.Row="3" Name="btnAPIClearToken" Content="API ClearToken" Click="BtnAPIClearToken_ClickAsync" />
-        <Button Grid.Row="4" Name="btnAPICheckKIOSK" Content="API CheckKIOSK" Click="BtnAPICheckKIOSK_ClickAsync" />
+        <StackPanel Orientation="Vertical">
+            <TextBox Name="txbURI" Text="URI" TextChanged="TxbURI_TextChanged"/>
+            <TextBox  Name="txbMaKO" Text="MaKO" GotFocus="TxbMaKO_GotFocus" TextChanged="TxbMaKO_TextChanged" />
+            <TextBox  Name="txbToken" Text="Token" IsReadOnly="True" />
+            <Button  Name="btnAPIGetToken" Content="API GetToken" Click="BtnAPIGetToken_ClickAsync" />
+            <Button  Name="btnAPIClearToken" Content="API ClearToken" Click="BtnAPIClearToken_ClickAsync" />
+            <Button  Name="btnGetLoaiMatHangs" Content="Get LoaiMatHang" Click="BtnGetLoaiMatHangs_Click" />
+
+            <Button  Name="btnTestProc" Content="Lap hoa don" Click="BtnTestProc_Click" />
+            <Button  Name="btnGetImage" Content="Get image" Click="BtnGetImage_Click" />
+            <Image  Name="imgTest" />
+            <Button  Name="btnInsertLMH" Content="Insert LMH" Click="BtnInsertLMH_Click" />
+            <Button  Name="btnLapHoaDon" Content="Lập hóa đơn" Click="BtnLapHoaDon_Click" />
+            <Button  Name="btnNapTien" Content="Nạp tiền" Click="BtnNapTien_Click" />
+            <StackPanel Orientation="Horizontal" Name="spnImages"></StackPanel>
+
+            <StackPanel Orientation="Horizontal" Name="spnButtonGet">
+                <Button Name="btnLoaiMatHang" Click="BtnLoaiMatHang_Click" Content="Loai mat hang"/>
+                <Button Name="btnBuoiAn" Click="BtnBuoiAn_Click" Content="Buoi an"/>
+                <Button Name="btnMatHang" Click="BtnMatHang_Click" Content="Mat hang"/>
+                <Button Name="btnHinhThucThanhToan" Click="BtnHinhThucThanhToan_Click" Content="HTTT"/>
+                <Button Name="btnDotKhuyenMai" Click="BtnDotKhuyenMai_Click" Content="Dot KM"/>
+                <Button Name="btnChiTietGiamGiaTHeoSL" Click="BtnChiTietGiamGiaTHeoSL_Click" Content="CTKM"/>
+            </StackPanel>
+        </StackPanel>
         
     </Grid>
 </Window>

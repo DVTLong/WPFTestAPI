@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLKIOSKModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoaiMatHang">
+          <Key>
+            <PropertyRef Name="MaLMH" />
+          </Key>
+          <Property Name="MaLMH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLMH" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageLMH" Type="varbinary(max)" />
+          <Property Name="SoHD" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_BuoiAn' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_BuoiAn">
+          <Key>
+            <PropertyRef Name="MaBA" />
+          </Key>
+          <Property Name="MaBA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenBA" Type="nvarchar" MaxLength="50" />
+          <Property Name="GioBD" Type="time" Precision="7" />
+          <Property Name="GioKT" Type="time" Precision="7" />
+          <Property Name="SoHD" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_ChiTietGiamGiaTheoSL' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_ChiTietGiamGiaTheoSL">
+          <Key>
+            <PropertyRef Name="STT" />
+            <PropertyRef Name="MaKM" />
+            <PropertyRef Name="MaMH" />
+            <PropertyRef Name="TrangThai" />
+            <PropertyRef Name="SLMuaToiThieu" />
+            <PropertyRef Name="Giam" />
+          </Key>
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="MaKM" Type="int" Nullable="false" />
+          <Property Name="MaMH" Type="int" Nullable="false" />
+          <Property Name="DonGia" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="SLMuaToiThieu" Type="int" Nullable="false" />
+          <Property Name="Giam" Type="decimal" Precision="6" Scale="4" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_DotKhuyenMai' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_DotKhuyenMai">
+          <Key>
+            <PropertyRef Name="MaKM" />
+            <PropertyRef Name="NgayTao" />
+            <PropertyRef Name="NgayBD" />
+            <PropertyRef Name="NgayKT" />
+            <PropertyRef Name="SoHD" />
+          </Key>
+          <Property Name="MaKM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NgayTao" Type="date" Nullable="false" />
+          <Property Name="NgayBD" Type="date" Nullable="false" />
+          <Property Name="NgayKT" Type="date" Nullable="false" />
+          <Property Name="SoHD" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_HinhThucThanhToan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_HinhThucThanhToan">
+          <Key>
+            <PropertyRef Name="MaHTTT" />
+          </Key>
+          <Property Name="MaHTTT" Type="int" Nullable="false" />
+          <Property Name="TenHTTT" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_LoaiMatHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_LoaiMatHang">
+          <Key>
+            <PropertyRef Name="MaLMH" />
+          </Key>
+          <Property Name="MaLMH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenLMH" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageLMH" Type="varbinary(max)" />
+          <Property Name="SoHD" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_MatHang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_MatHang">
+          <Key>
+            <PropertyRef Name="MaMH" />
+            <PropertyRef Name="MaDV" />
+            <PropertyRef Name="TrangThai" />
+            <PropertyRef Name="MaLMH" />
+          </Key>
+          <Property Name="MaMH" Type="int" Nullable="false" />
+          <Property Name="TenMH" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoLuongTon" Type="int" />
+          <Property Name="DonGia" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="MaDV" Type="int" Nullable="false" />
+          <Property Name="TenDV" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="ImageMH" Type="varbinary(max)" />
+          <Property Name="MaLMH" Type="int" Nullable="false" />
+          <Property Name="TenLMH" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoHD" Type="int" />
+        </EntityType>
+        <EntityContainer Name="QLKIOSKModelStoreContainer">
+          <EntitySet Name="LoaiMatHang" EntityType="Self.LoaiMatHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_api_BuoiAn" EntityType="Self.v_api_BuoiAn" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_BuoiAn].[MaBA] AS [MaBA], 
+    [v_api_BuoiAn].[TenBA] AS [TenBA], 
+    [v_api_BuoiAn].[GioBD] AS [GioBD], 
+    [v_api_BuoiAn].[GioKT] AS [GioKT], 
+    [v_api_BuoiAn].[SoHD] AS [SoHD]
+    FROM [dbo].[v_api_BuoiAn] AS [v_api_BuoiAn]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_api_ChiTietGiamGiaTheoSL" EntityType="Self.v_api_ChiTietGiamGiaTheoSL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_ChiTietGiamGiaTheoSL].[STT] AS [STT], 
+    [v_api_ChiTietGiamGiaTheoSL].[MaKM] AS [MaKM], 
+    [v_api_ChiTietGiamGiaTheoSL].[MaMH] AS [MaMH], 
+    [v_api_ChiTietGiamGiaTheoSL].[DonGia] AS [DonGia], 
+    [v_api_ChiTietGiamGiaTheoSL].[TrangThai] AS [TrangThai], 
+    [v_api_ChiTietGiamGiaTheoSL].[SLMuaToiThieu] AS [SLMuaToiThieu], 
+    [v_api_ChiTietGiamGiaTheoSL].[Giam] AS [Giam]
+    FROM [dbo].[v_api_ChiTietGiamGiaTheoSL] AS [v_api_ChiTietGiamGiaTheoSL]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_api_DotKhuyenMai" EntityType="Self.v_api_DotKhuyenMai" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_DotKhuyenMai].[MaKM] AS [MaKM], 
+    [v_api_DotKhuyenMai].[NgayTao] AS [NgayTao], 
+    [v_api_DotKhuyenMai].[NgayBD] AS [NgayBD], 
+    [v_api_DotKhuyenMai].[NgayKT] AS [NgayKT], 
+    [v_api_DotKhuyenMai].[SoHD] AS [SoHD]
+    FROM [dbo].[v_api_DotKhuyenMai] AS [v_api_DotKhuyenMai]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_api_HinhThucThanhToan" EntityType="Self.v_api_HinhThucThanhToan" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_HinhThucThanhToan].[MaHTTT] AS [MaHTTT], 
+    [v_api_HinhThucThanhToan].[TenHTTT] AS [TenHTTT]
+    FROM [dbo].[v_api_HinhThucThanhToan] AS [v_api_HinhThucThanhToan]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_api_LoaiMatHang" EntityType="Self.v_api_LoaiMatHang" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_LoaiMatHang].[MaLMH] AS [MaLMH], 
+    [v_api_LoaiMatHang].[TenLMH] AS [TenLMH], 
+    [v_api_LoaiMatHang].[ImageLMH] AS [ImageLMH], 
+    [v_api_LoaiMatHang].[SoHD] AS [SoHD]
+    FROM [dbo].[v_api_LoaiMatHang] AS [v_api_LoaiMatHang]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_api_MatHang" EntityType="Self.v_api_MatHang" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_MatHang].[MaMH] AS [MaMH], 
+    [v_api_MatHang].[TenMH] AS [TenMH], 
+    [v_api_MatHang].[SoLuongTon] AS [SoLuongTon], 
+    [v_api_MatHang].[DonGia] AS [DonGia], 
+    [v_api_MatHang].[MaDV] AS [MaDV], 
+    [v_api_MatHang].[TenDV] AS [TenDV], 
+    [v_api_MatHang].[TrangThai] AS [TrangThai], 
+    [v_api_MatHang].[ImageMH] AS [ImageMH], 
+    [v_api_MatHang].[MaLMH] AS [MaLMH], 
+    [v_api_MatHang].[TenLMH] AS [TenLMH], 
+    [v_api_MatHang].[SoHD] AS [SoHD]
+    FROM [dbo].[v_api_MatHang] AS [v_api_MatHang]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLKIOSKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LoaiMatHang">
+          <Key>
+            <PropertyRef Name="MaLMH" />
+          </Key>
+          <Property Name="MaLMH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLMH" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="SoHD" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="QLKIOSKEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoaiMatHangs" EntityType="Self.LoaiMatHang" />
+          <EntitySet Name="v_api_BuoiAn" EntityType="QLKIOSKModel.v_api_BuoiAn" />
+          <EntitySet Name="v_api_ChiTietGiamGiaTheoSL" EntityType="QLKIOSKModel.v_api_ChiTietGiamGiaTheoSL" />
+          <EntitySet Name="v_api_DotKhuyenMai" EntityType="QLKIOSKModel.v_api_DotKhuyenMai" />
+          <EntitySet Name="v_api_HinhThucThanhToan" EntityType="QLKIOSKModel.v_api_HinhThucThanhToan" />
+          <EntitySet Name="v_api_LoaiMatHang" EntityType="QLKIOSKModel.v_api_LoaiMatHang" />
+          <EntitySet Name="v_api_MatHang" EntityType="QLKIOSKModel.v_api_MatHang" />
+        </EntityContainer>
+        <EntityType Name="v_api_BuoiAn">
+          <Key>
+            <PropertyRef Name="MaBA" />
+          </Key>
+          <Property Name="MaBA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenBA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GioBD" Type="Time" Precision="7" />
+          <Property Name="GioKT" Type="Time" Precision="7" />
+          <Property Name="SoHD" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_api_ChiTietGiamGiaTheoSL">
+          <Key>
+            <PropertyRef Name="STT" />
+            <PropertyRef Name="MaKM" />
+            <PropertyRef Name="MaMH" />
+            <PropertyRef Name="TrangThai" />
+            <PropertyRef Name="SLMuaToiThieu" />
+            <PropertyRef Name="Giam" />
+          </Key>
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="MaKM" Type="Int32" Nullable="false" />
+          <Property Name="MaMH" Type="Int32" Nullable="false" />
+          <Property Name="DonGia" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <Property Name="SLMuaToiThieu" Type="Int32" Nullable="false" />
+          <Property Name="Giam" Type="Decimal" Nullable="false" Precision="6" Scale="4" />
+        </EntityType>
+        <EntityType Name="v_api_DotKhuyenMai">
+          <Key>
+            <PropertyRef Name="MaKM" />
+            <PropertyRef Name="NgayTao" />
+            <PropertyRef Name="NgayBD" />
+            <PropertyRef Name="NgayKT" />
+            <PropertyRef Name="SoHD" />
+          </Key>
+          <Property Name="MaKM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NgayTao" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayBD" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayKT" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SoHD" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="v_api_HinhThucThanhToan">
+          <Key>
+            <PropertyRef Name="MaHTTT" />
+          </Key>
+          <Property Name="MaHTTT" Type="Int32" Nullable="false" />
+          <Property Name="TenHTTT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="v_api_LoaiMatHang">
+          <Key>
+            <PropertyRef Name="MaLMH" />
+          </Key>
+          <Property Name="MaLMH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenLMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLMH" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="SoHD" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_api_MatHang">
+          <Key>
+            <PropertyRef Name="MaMH" />
+            <PropertyRef Name="MaDV" />
+            <PropertyRef Name="TrangThai" />
+            <PropertyRef Name="MaLMH" />
+          </Key>
+          <Property Name="MaMH" Type="Int32" Nullable="false" />
+          <Property Name="TenMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuongTon" Type="Int32" />
+          <Property Name="DonGia" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="MaDV" Type="Int32" Nullable="false" />
+          <Property Name="TenDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <Property Name="ImageMH" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MaLMH" Type="Int32" Nullable="false" />
+          <Property Name="TenLMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SoHD" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLKIOSKModelStoreContainer" CdmEntityContainer="QLKIOSKEntities">
+          <EntitySetMapping Name="LoaiMatHangs">
+            <EntityTypeMapping TypeName="QLKIOSKModel.LoaiMatHang">
+              <MappingFragment StoreEntitySet="LoaiMatHang">
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+                <ScalarProperty Name="MaLMH" ColumnName="MaLMH" />
+                <ScalarProperty Name="TenLMH" ColumnName="TenLMH" />
+                <ScalarProperty Name="ImageLMH" ColumnName="ImageLMH" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_BuoiAn">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_BuoiAn">
+              <MappingFragment StoreEntitySet="v_api_BuoiAn">
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+                <ScalarProperty Name="GioKT" ColumnName="GioKT" />
+                <ScalarProperty Name="GioBD" ColumnName="GioBD" />
+                <ScalarProperty Name="TenBA" ColumnName="TenBA" />
+                <ScalarProperty Name="MaBA" ColumnName="MaBA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_ChiTietGiamGiaTheoSL">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_ChiTietGiamGiaTheoSL">
+              <MappingFragment StoreEntitySet="v_api_ChiTietGiamGiaTheoSL">
+                <ScalarProperty Name="Giam" ColumnName="Giam" />
+                <ScalarProperty Name="SLMuaToiThieu" ColumnName="SLMuaToiThieu" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+                <ScalarProperty Name="MaKM" ColumnName="MaKM" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_DotKhuyenMai">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_DotKhuyenMai">
+              <MappingFragment StoreEntitySet="v_api_DotKhuyenMai">
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+                <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
+                <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+                <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+                <ScalarProperty Name="MaKM" ColumnName="MaKM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_HinhThucThanhToan">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_HinhThucThanhToan">
+              <MappingFragment StoreEntitySet="v_api_HinhThucThanhToan">
+                <ScalarProperty Name="TenHTTT" ColumnName="TenHTTT" />
+                <ScalarProperty Name="MaHTTT" ColumnName="MaHTTT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_LoaiMatHang">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_LoaiMatHang">
+              <MappingFragment StoreEntitySet="v_api_LoaiMatHang">
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+                <ScalarProperty Name="ImageLMH" ColumnName="ImageLMH" />
+                <ScalarProperty Name="TenLMH" ColumnName="TenLMH" />
+                <ScalarProperty Name="MaLMH" ColumnName="MaLMH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_MatHang">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_MatHang">
+              <MappingFragment StoreEntitySet="v_api_MatHang">
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
+                <ScalarProperty Name="TenLMH" ColumnName="TenLMH" />
+                <ScalarProperty Name="MaLMH" ColumnName="MaLMH" />
+                <ScalarProperty Name="ImageMH" ColumnName="ImageMH" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="TenDV" ColumnName="TenDV" />
+                <ScalarProperty Name="MaDV" ColumnName="MaDV" />
+                <ScalarProperty Name="DonGia" ColumnName="DonGia" />
+                <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
+                <ScalarProperty Name="TenMH" ColumnName="TenMH" />
+                <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
