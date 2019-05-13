@@ -55,6 +55,12 @@ namespace WPFTestAPI
             dgData.ItemsSource = list;
         }
 
+        public DatagridWindow(List<v_api_QuangCao> list)
+        {
+            InitializeComponent();
+            dgData.ItemsSource = list;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 

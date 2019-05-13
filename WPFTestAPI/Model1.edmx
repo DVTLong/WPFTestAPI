@@ -103,6 +103,26 @@ warning 6002: The table/view 'QLKIOSK.dbo.v_api_MatHang' does not have a primary
           <Property Name="TenLMH" Type="nvarchar" MaxLength="50" />
           <Property Name="SoHD" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QLKIOSK.dbo.v_api_QuangCao' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_api_QuangCao">
+          <Key>
+            <PropertyRef Name="SoHD" />
+            <PropertyRef Name="MAKO" />
+            <PropertyRef Name="MaQC" />
+            <PropertyRef Name="NgayBDQC" />
+            <PropertyRef Name="NgayKTQC" />
+            <PropertyRef Name="ThoiLuong" />
+          </Key>
+          <Property Name="SoHD" Type="int" Nullable="false" />
+          <Property Name="MAKO" Type="varchar" MaxLength="18" Nullable="false" />
+          <Property Name="MaQC" Type="int" Nullable="false" />
+          <Property Name="NgayBDQC" Type="date" Nullable="false" />
+          <Property Name="NgayKTQC" Type="date" Nullable="false" />
+          <Property Name="NoiDung" Type="nvarchar" MaxLength="200" />
+          <Property Name="ImageQC" Type="varbinary(max)" />
+          <Property Name="ThoiLuong" Type="int" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="QLKIOSKModelStoreContainer">
           <EntitySet Name="LoaiMatHang" EntityType="Self.LoaiMatHang" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="v_api_BuoiAn" EntityType="Self.v_api_BuoiAn" store:Type="Views" store:Schema="dbo">
@@ -163,6 +183,18 @@ warning 6002: The table/view 'QLKIOSK.dbo.v_api_MatHang' does not have a primary
     [v_api_MatHang].[SoHD] AS [SoHD]
     FROM [dbo].[v_api_MatHang] AS [v_api_MatHang]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="v_api_QuangCao" EntityType="Self.v_api_QuangCao" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_api_QuangCao].[SoHD] AS [SoHD], 
+    [v_api_QuangCao].[MAKO] AS [MAKO], 
+    [v_api_QuangCao].[MaQC] AS [MaQC], 
+    [v_api_QuangCao].[NgayBDQC] AS [NgayBDQC], 
+    [v_api_QuangCao].[NgayKTQC] AS [NgayKTQC], 
+    [v_api_QuangCao].[NoiDung] AS [NoiDung], 
+    [v_api_QuangCao].[ImageQC] AS [ImageQC], 
+    [v_api_QuangCao].[ThoiLuong] AS [ThoiLuong]
+    FROM [dbo].[v_api_QuangCao] AS [v_api_QuangCao]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -186,6 +218,7 @@ warning 6002: The table/view 'QLKIOSK.dbo.v_api_MatHang' does not have a primary
           <EntitySet Name="v_api_HinhThucThanhToan" EntityType="QLKIOSKModel.v_api_HinhThucThanhToan" />
           <EntitySet Name="v_api_LoaiMatHang" EntityType="QLKIOSKModel.v_api_LoaiMatHang" />
           <EntitySet Name="v_api_MatHang" EntityType="QLKIOSKModel.v_api_MatHang" />
+          <EntitySet Name="v_api_QuangCao" EntityType="QLKIOSKModel.v_api_QuangCao" />
         </EntityContainer>
         <EntityType Name="v_api_BuoiAn">
           <Key>
@@ -262,6 +295,24 @@ warning 6002: The table/view 'QLKIOSK.dbo.v_api_MatHang' does not have a primary
           <Property Name="MaLMH" Type="Int32" Nullable="false" />
           <Property Name="TenLMH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SoHD" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_api_QuangCao">
+          <Key>
+            <PropertyRef Name="SoHD" />
+            <PropertyRef Name="MAKO" />
+            <PropertyRef Name="MaQC" />
+            <PropertyRef Name="NgayBDQC" />
+            <PropertyRef Name="NgayKTQC" />
+            <PropertyRef Name="ThoiLuong" />
+          </Key>
+          <Property Name="SoHD" Type="Int32" Nullable="false" />
+          <Property Name="MAKO" Type="String" Nullable="false" MaxLength="18" FixedLength="false" Unicode="false" />
+          <Property Name="MaQC" Type="Int32" Nullable="false" />
+          <Property Name="NgayBDQC" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NgayKTQC" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NoiDung" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ImageQC" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ThoiLuong" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -347,6 +398,20 @@ warning 6002: The table/view 'QLKIOSK.dbo.v_api_MatHang' does not have a primary
                 <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
                 <ScalarProperty Name="TenMH" ColumnName="TenMH" />
                 <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_api_QuangCao">
+            <EntityTypeMapping TypeName="QLKIOSKModel.v_api_QuangCao">
+              <MappingFragment StoreEntitySet="v_api_QuangCao">
+                <ScalarProperty Name="ThoiLuong" ColumnName="ThoiLuong" />
+                <ScalarProperty Name="ImageQC" ColumnName="ImageQC" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="NgayKTQC" ColumnName="NgayKTQC" />
+                <ScalarProperty Name="NgayBDQC" ColumnName="NgayBDQC" />
+                <ScalarProperty Name="MaQC" ColumnName="MaQC" />
+                <ScalarProperty Name="MAKO" ColumnName="MAKO" />
+                <ScalarProperty Name="SoHD" ColumnName="SoHD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

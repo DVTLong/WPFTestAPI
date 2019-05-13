@@ -262,5 +262,12 @@ namespace WPFTestAPI
             DatagridWindow w = new DatagridWindow(list);
             w.ShowDialog();
         }
+
+        private async void BtnQuangCao_Click(object sender, RoutedEventArgs e)
+        {
+            List<v_api_QuangCao> list = await Task.Run(() => KIOSKAPI.GetQuangCaosAsync(KIOSKAPI.Token, mako));
+            DatagridWindow w = new DatagridWindow(list);
+            w.ShowDialog();
+        }
     }
 }

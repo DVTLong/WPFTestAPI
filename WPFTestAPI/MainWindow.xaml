@@ -32,6 +32,7 @@
                 <Button Name="btnHinhThucThanhToan" Click="BtnHinhThucThanhToan_Click" Content="HTTT"/>
                 <Button Name="btnDotKhuyenMai" Click="BtnDotKhuyenMai_Click" Content="Dot KM"/>
                 <Button Name="btnChiTietGiamGiaTHeoSL" Click="BtnChiTietGiamGiaTHeoSL_Click" Content="CTKM"/>
+                <Button Name="btnQuangCao" Click="BtnQuangCao_Click" Content="Quang cao"/>
             </StackPanel>
         </StackPanel>
         

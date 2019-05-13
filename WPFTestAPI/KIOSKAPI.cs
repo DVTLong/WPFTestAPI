@@ -625,7 +625,76 @@ namespace WPFTestAPI
             }
         }
 
+        public static async Task<List<v_api_QuangCao>> GetQuangCaosAsync(string token, string makiosk)
+        {
+            List<v_api_QuangCao> list = new List<v_api_QuangCao>();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(Uri);
 
+                try
+                {
+                    string parameters = string.Format("?token={0}&makiosk={1}", token, makiosk);
+                    var result = await client.GetAsync("/api/GetQuangCaos" + parameters);
+                    switch (result.StatusCode)
+                    {
+                        case HttpStatusCode.BadRequest:
+                            if (isDebug)
+                            {
+                                MessageBox.Show("BadRequest\n" + result.Content);
+                            }
+                            break;
+                        case HttpStatusCode.InternalServerError:
+                            if (isDebug)
+                            {
+                                MessageBox.Show("InternalServerError");
+                            }
+                            break;
+                        case HttpStatusCode.OK:
+                            string resultContent = result.Content.ReadAsStringAsync().Result;
+                            char[] trimChars = { '"' };
+                            resultContent = resultContent.Trim(trimChars);
+
+
+                            JArray array = JArray.Parse(resultContent);
+                            for (int i = 0; i < array.Count; i++)
+                            {
+                                v_api_QuangCao quangCao = new v_api_QuangCao();
+                                quangCao.SoHD = Convert.ToInt32(array[i]["SoHD"].ToString());
+                                quangCao.MAKO = array[i]["MAKO"].ToString();
+                                quangCao.MaQC = Convert.ToInt32(array[i]["MaQC"].ToString());
+                                quangCao.NgayBDQC = DateTime.Parse(array[i]["NgayBDQC"].ToString());
+                                quangCao.NgayKTQC = DateTime.Parse(array[i]["NgayKTQC"].ToString());
+                                quangCao.NoiDung = array[i]["NoiDung"].ToString();
+                                if (array[i]["ImageQC"].Type != JTokenType.Null)
+                                {
+                                    quangCao.ImageQC = Convert.FromBase64String(array[i]["ImageQC"].Value<string>());
+                                }
+                                quangCao.ThoiLuong = Convert.ToInt32(array[i]["ThoiLuong"].ToString());
+
+                                list.Add(quangCao);
+                            }
+
+
+                            if (isDebug)
+                            {
+                                MessageBox.Show("OK");
+                            }
+                            return list;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    if (isDebug)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    return list;
+                }
+            }
+
+            return list;
+        }
 
     }
 }

@@ -32,5 +32,6 @@ namespace WPFTestAPI
         public virtual DbSet<v_api_HinhThucThanhToan> v_api_HinhThucThanhToan { get; set; }
         public virtual DbSet<v_api_LoaiMatHang> v_api_LoaiMatHang { get; set; }
         public virtual DbSet<v_api_MatHang> v_api_MatHang { get; set; }
+        public virtual DbSet<v_api_QuangCao> v_api_QuangCao { get; set; }
     }
 }
